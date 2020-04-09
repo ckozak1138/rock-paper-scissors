@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Rock Paper Scissors</title>
+    <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <script>
+            let playerScore = parseInt(0);
+            let computerScore = parseInt(0);
+            let i=0;
+            function computerPlay(){
+                let choice=[ "ROCK", "PAPER", "SCISSORS" ];
+                return choice[Math.floor(Math.random()*choice.length)];
+            }
+            function round(playerSelection, compiterSelection){
+                if (computerSelection === playerSelection){
+                    return "TIE!";
+                }
+                    if(playerSelection === "ROCK"){
+                        if(computerSelection === "SCISSORS"){
+                            return playerScore++, "YOU WIN!";
+                        } else {
+                            computerScore++;
+                            return "YOU LOSE! PAPER BEATS ROCK!";
+                        }
+                    }
+                    if(playerSelection === "PAPER"){
+                        if(computerSelection === "ROCK"){
+                            playerScore++;
+                            return "YOU LOSE! SCISSORS BEAT PAPER!";
+                        }
+                    }
+                    if(playerSelection === "SCISSORS"){
+                        if(computerSelection === "PAPER"){
+                            playerScore++;
+                            return playerScore, "YOU WIN!"
+                        } else {
+                            computerScore++; 
+                            return "YOU LOSE! ROCK BEAT SCISSORS!"
+                        }
+                    }
+            }
+            function game(){
+                const playerInput = prompt("Rock, Paper, or Scissors?");
+                const playerSelection = playerInput.toUpperCase() ;
+                const computerSelection = computerPlay();
+                console.log("Player play:", playerSelection);
+                console.log("Computer play:", computerSelection);
+                console.log(round(playerSelection, computerSelection));
+                console.log("Your score:", playerScore);
+                console.log("Computer score:", computerScore);
+
+                i++;
+                if (i !== 5){
+                    game();
+                }else{
+                    alert("GAME OVER! USER SCORE: "+playerScore+" vs COMPUTER SCORE: "+computerScore+"");
+                }
+            }
+            game();
+            
+        </script>
+    </body>
+</html>
